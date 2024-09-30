@@ -4,6 +4,25 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import SidebarItem from "./SidebarItem";
+import { IoAdd, IoCalendarNumberOutline, IoCheckboxOutline, IoListOutline } from "react-icons/io5";
+
+const menuItems = [
+  {
+    icon: <IoCalendarNumberOutline />,
+    title: 'Dasboard',
+    path: '/dashboard'
+  },
+  {
+    icon: <IoCheckboxOutline />,
+    title: 'Rest todos',
+    path: '/dashboard/rest-todos'
+  },
+  {
+    icon: <IoListOutline />,
+    title: 'Server Actions',
+    path: '/dashboard/res'
+  },
+]
 
 function Sidebar() {
   return (
@@ -36,8 +55,12 @@ function Sidebar() {
         </div>
 
         <ul className="space-y-2 tracking-wide mt-8">
-          {/* TODO: src/components <SidebarItem /> */}
-          <SidebarItem />
+          {
+          menuItems.map( item => (
+            <SidebarItem key={item.path} {...item} />
+           ))
+          }
+          
         </ul>
       </div>
 

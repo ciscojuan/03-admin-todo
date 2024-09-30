@@ -16,7 +16,7 @@ export default function DashboardLayout({
 
         {/* TODO: Contenido en el Layout.tsx */}
         <div className="px-6 pt-6">
-          <DashboardPage />
+          {children}
         </div>
       </div>
     </>
