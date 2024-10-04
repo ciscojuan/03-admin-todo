@@ -1,8 +1,24 @@
+import { PrismaClient } from "@prisma/client";
+import { TodoGrid } from "@/todos/components/TodoGrid";
+import { NewTodo } from "@/todos/components/NewTodo";
 
-export default function ResstTodosPage() {
+const prisma = new PrismaClient();
+
+export const metadata = {
+ title: 'Listado de todos',
+ description: 'Listado de todos',
+};
+
+export default async function RestTodosPage() {
+
+  const todos = await prisma.todo.findMany({orderBy: {description: 'asc'}})
+
   return (
     <div>
-      <h1 className="text-center text-5xl">Hello World</h1>
+      <div className="w-full px-3 mx-5 mb-5">
+        <NewTodo/>
+      </div>
+      <TodoGrid todos={todos} />
     </div>
   );
 }

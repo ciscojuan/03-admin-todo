@@ -28,4 +28,9 @@ export async function POST(request: Request) {
     return Response.json({ error, status: 400 });
   }
 }
+export async function DELETE(request: Request) {
+  await prisma.todo.deleteMany({ where: { complete: true } });
+
+  return NextResponse.json({message: 'todos borrados.'});
+}
 
